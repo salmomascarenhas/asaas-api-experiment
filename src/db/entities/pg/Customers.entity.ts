@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Payments } from './Payments.entity'
 
 @Entity()
 export class Customers {
@@ -11,7 +12,7 @@ export class Customers {
     @Column({ length: 100 })
     name: string
 
-    @Column()
+    @Column({ unique: true })
     cpf: string
 
     @Column({ nullable: true })
@@ -19,6 +20,9 @@ export class Customers {
 
     @Column({ nullable: true })
     phone: string
+
+    @OneToMany(() => Customers, (Customers) => Customers.payment_id)
+    payment_id: Payments[]
 
     @CreateDateColumn({ type: 'timestamp' })
     created_at: Date

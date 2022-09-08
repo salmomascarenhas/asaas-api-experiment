@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Double, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Column, CreateDateColumn, DeleteDateColumn, Double, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { Customers } from './Customers.entity'
 
 @Entity()
 export class Payments {
@@ -8,8 +9,9 @@ export class Payments {
     @Column()
     payment_id: number
 
-    @Column()
-    id_customer: number
+    @ManyToOne(() => Customers, Customers => Customers.payment_id)
+    @JoinColumn({ name: 'customer_id', referencedColumnName: 'id' })
+    customer_id: Customers
 
     @Column()
     value: Double
