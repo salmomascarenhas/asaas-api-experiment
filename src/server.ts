@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv'
 import express, { Request, Response } from 'express'
-import { PostgresAppDataSource } from "./db/data-source"
+import { PostgresAppDataSource } from "./db/typeorm-data-source"
 dotenv.config()
 
 const app = express()
