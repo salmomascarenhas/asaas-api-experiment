@@ -1,0 +1,45 @@
+{
+  "name": "desafio-ddsolutions",
+  "version": "1.0.0",
+  "description": "Esse desafio tem por objetivo definir o nível de conhecimento sobre o desenvolvimento backend e DevOps. Tecnologias envolvidas: - Nodejs (opcional); - Typescript (opcional); - Eslint; - Prettier; - Express; - Typeorm; - Celebrate; - Swagger; - Docker; - Docker compose; - Nginx (proxy reverso); - Postgres; - Mongo; - EC2; - Amazon RDS;",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon",
+    "build": "rimraf ./build && tsc",
+    "start": "npm run build && node build/src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salmomascarenhas/desafio-ddsolutions.git"
+  },
+  "keywords": [],
+  "author": "Salmo Mascarenhas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/salmomascarenhas/desafio-ddsolutions/issues"
+  },
+  "homepage": "https://github.com/salmomascarenhas/desafio-ddsolutions#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.7.16",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.19",
+    "prettier": "2.7.1",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "mongodb": "^3.7.3",
+    "pg": "^8.8.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.9"
+  }
+}
