@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Double, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { Column, CreateDateColumn, DeleteDateColumn, Double, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { Notifications } from '../mongo/Notifications.entity'
 import { Customers } from './Customers.entity'
 
 @Entity()
@@ -12,6 +13,9 @@ export class Payments {
     @ManyToOne(() => Customers, Customers => Customers.payment_id)
     @JoinColumn({ name: 'customer_id', referencedColumnName: 'id' })
     customer_id: Customers
+
+    @OneToMany(() => Notifications, (Notifications) => Notifications.payment_id)
+    notification_id: Notifications[]
 
     @Column()
     value: Double

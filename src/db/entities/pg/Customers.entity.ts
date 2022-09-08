@@ -21,7 +21,7 @@ export class Customers {
     @Column({ nullable: true })
     phone: string
 
-    @OneToMany(() => Customers, (Customers) => Customers.payment_id)
+    @OneToMany(() => Payments, (Payments) => Payments.customer_id)
     payment_id: Payments[]
 
     @CreateDateColumn({ type: 'timestamp' })
