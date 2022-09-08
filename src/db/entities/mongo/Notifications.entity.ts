@@ -1,12 +1,14 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { Payments } from '../pg/Payments.entity'
 
 @Entity()
 export class Notifications {
     @PrimaryGeneratedColumn('uuid')
     id: number
 
-    @Column()
-    payment_id: number
+    @ManyToOne(() => Payments, Payments => Payments.notification_id)
+    @JoinColumn({ name: 'payment_id', referencedColumnName: 'id' })
+    payment_id: Payments
 
     @Column()
     description: string
