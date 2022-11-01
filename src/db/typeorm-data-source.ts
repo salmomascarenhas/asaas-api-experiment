@@ -3,7 +3,7 @@ import "reflect-metadata"
 import { DataSource } from "typeorm"
 dotenv.config()
 
-export const PostgresAppDataSource = new DataSource({
+export const dataSource = new DataSource({
     type: 'postgres',
     host: process.env.POSTGRES_HOST,
     port: parseInt(process.env.POSTGRES_PORT),
@@ -16,6 +16,10 @@ export const PostgresAppDataSource = new DataSource({
     migrations: ['./migrations/'],
     subscribers: [],
 })
+
+const createConeccion = (host = 'postgres'): Promise<DataSource> => {
+    return dataSource.setOptions({ host }).initialize()
+}
 
 export const MongoAppDataSource = new DataSource({
     type: 'mongodb',
@@ -30,3 +34,7 @@ export const MongoAppDataSource = new DataSource({
     migrations: [],
     subscribers: [],
 })
+
+export { createConeccion }
+
+export default dataSource
